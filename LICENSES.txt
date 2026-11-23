@@ -1,0 +1,33 @@
+Hero Saga para Mac — avisos de licença de terceiros
+===================================================
+
+Este aplicativo NÃO contém o jogo Hero Saga. Ele contém apenas um "launcher"
+(código-fonte próprio, ver repositório) e um motor de compatibilidade
+Windows (Wine) de código aberto, redistribuído sem modificações.
+
+1) Wine (WineCX 24.0.7)
+   - Origem: código aberto do CrossOver publicado pela CodeWeavers
+     (https://www.codeweavers.com/crossover/source), compilado pelo projeto
+     Sikarugir (https://github.com/Sikarugir-App/Engines, arquivo
+     WS12WineCX24.0.7_7.tar.xz).
+   - Licença: GNU Lesser General Public License v2.1 ou posterior.
+     Texto completo em LGPL-2.1.txt. O código-fonte correspondente pode ser
+     obtido nos links acima.
+
+2) Bibliotecas de suporte (pasta engine/*.dylib)
+   - Origem: pacote "Wine Staging 11.21" de Gcenx
+     (https://github.com/Gcenx/macOS_Wine_builds, release 11.21),
+     redistribuídas sem modificações.
+   - Incluem, entre outras: FreeType (FreeType License / GPLv2),
+     GnuTLS (LGPL 2.1+), Nettle/GMP (LGPL 3+), libxml2/libxslt (MIT),
+     MoltenVK (Apache 2.0), SDL2 (zlib), libpng (libpng license),
+     zlib (zlib), ICU (Unicode License), libinotify-kqueue (MIT),
+     gettext/libintl e libiconv (LGPL). Cada biblioteca permanece sob
+     sua licença original; o código-fonte está disponível nos
+     respectivos projetos e no repositório do Gcenx.
+
+3) Launcher "Hero Saga para Mac"
+   - Código-fonte: pasta Sources/ do repositório deste projeto.
+
+O jogo Hero Saga, seus arquivos, marcas e servidores pertencem aos seus
+respectivos donos. O launcher não altera o executável do jogo.

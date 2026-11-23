@@ -1,0 +1,21 @@
+HERO SAGA PARA MAC — INSTALAÇÃO RÁPIDA
+======================================
+
+1. Arraste "Hero Saga para Mac" para a pasta Aplicativos (Applications).
+2. Abra o app pela pasta Aplicativos.
+   Se o macOS disser que o app "não pode ser verificado":
+     Ajustes do Sistema > Privacidade e Segurança > role até o fim >
+     "Abrir Mesmo Assim" (ou clique com o botão direito no app > Abrir).
+3. Clique em "Escolher pasta…" e selecione a pasta do Hero Saga
+   (a que contém Hero.exe). Baixe o jogo pelo site oficial antes.
+4. Escolha o preset (o marcado com ★ é o recomendado para o seu Mac)
+   e clique em "Jogar". Na primeira vez ele leva ~1 minuto preparando.
+
+Macs com Apple Silicon (M1, M2, M3, M4): o macOS pode pedir para instalar
+o Rosetta. Aceite. Se não pedir e o jogo não abrir, rode no Terminal:
+    softwareupdate --install-rosetta --agree-to-license
+
+Dica: sempre saia do jogo pelo menu. Se fechar à força e aparecer
+"Recusado pelo servidor", espere 5 minutos e tente de novo.
+
+Guia completo, código-fonte e licenças: veja o repositório no GitHub.
