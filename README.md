@@ -20,6 +20,8 @@ Baixe o `.dmg` na página de [**Releases**](../../releases) e siga o [Guia do us
 | [03 – Relatório do projeto](docs/03-RELATORIO-DO-PROJETO.md) | Staff: tudo que foi feito e testado |
 | [04 – Segurança](docs/04-SEGURANCA.md) | Todos: antivírus, hashes, auditoria |
 
+**VirusTotal do .dmg 1.0:** 1/44 (só um alerta heurístico genérico do MaxSecure). [Ver análise completa](https://www.virustotal.com/gui/file/40ece81da3710473995fd60e8a39f5484d3798a99e9ab379457e975ef83b0a89/detection) · [detalhes](docs/04-SEGURANCA.md#5-virustotal-70-antivírus)
+
 ## Compilar a partir do código
 
 Requer as Command Line Tools da Apple (`xcode-select --install`).

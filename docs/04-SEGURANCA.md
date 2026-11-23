@@ -64,6 +64,8 @@ O macOS também passa o app pelo **XProtect** (antivírus embutido) na primeira 
 | Pacote Gcenx Wine Staging 11.21 (completo) | 8 / 47 alertas genéricos ("Malware-gen", "fakeav", "Static AI") | [virustotal.com/gui/file/d7bcd5ab…](https://www.virustotal.com/gui/file/d7bcd5abf4df27aae397a7898aef074fea4a2e0b51e0a55aa9659517bbf9d452) |
 | **`HeroSagaParaMac-1.0.dmg`** | **1 / 44**: só o MaxSecure, com alerta heurístico genérico (`Trojan.Malware.333924486.susgen`) | [virustotal.com/gui/file/40ece81d…](https://www.virustotal.com/gui/file/40ece81da3710473995fd60e8a39f5484d3798a99e9ab379457e975ef83b0a89/detection) |
 
+![Resultado do VirusTotal para o .dmg 1.0](virustotal-dmg-1.0.jpg)
+
 **Resultado do .dmg (análise de 23/11/2026):**
 - **43 antivírus não detectaram nada**, incluindo Microsoft Defender, CrowdStrike Falcon, Malwarebytes, Symantec, McAfee, Trellix, Fortinet, Google, Panda, DrWeb, GData, WithSecure, Avira, ClamAV e TrendMicro HouseCall.
 - **1 alerta (MaxSecure):** o sufixo `susgen` significa *suspicious generic*, uma suspeita por heurística e não a identificação de um vírus conhecido. O MaxSecure é conhecido por falsos positivos em arquivos novos, sem assinatura paga e com pouca "reputação", que é o caso de um .dmg recém-criado e assinado de forma ad-hoc.
