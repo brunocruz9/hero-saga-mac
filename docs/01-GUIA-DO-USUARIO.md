@@ -14,6 +14,26 @@ Este guia explica como instalar e usar o **Hero Saga para Mac**, o programa que 
 
 > Macs Apple Silicon usam o **Rosetta 2** da Apple. Se ele não estiver instalado, o macOS pede na primeira vez. É só aceitar.
 
+## Antes de começar: o que esperar do desempenho
+
+**Versão em teste.** O programa só foi testado em um **MacBook Air M1 (8 GB)**. Nele, o jogo roda bem no preset *Desempenho* (50–75 FPS), com gráficos mais simples que no Windows. **Ainda não sabemos como ele se comporta em outros processadores** (M2, M3, M4, versões Pro/Max ou Macs Intel). A expectativa é:
+
+| Mac | O que esperamos (não testado) |
+|---|---|
+| M2, M3, M4 | Melhor que o M1: cada geração tem processador e vídeo mais fortes |
+| M1/M2/M3 Pro, Max, Ultra | Melhor que o M1 comum, principalmente no vídeo |
+| Macs Intel (i5, i7, i9) | Provavelmente **pior** que o M1: não precisam do Rosetta, mas o vídeo integrado Intel é bem mais fraco |
+
+Se você testar em outro Mac, conte para a staff qual é o modelo e quantos FPS deu. Isso ajuda a ajustar os presets.
+
+**Por que o jogo pesa no Mac, mesmo sendo leve no Windows?** O Hero Saga foi feito para Windows, para processadores Intel/AMD e para o DirectX 9. Nos Macs com chip M, cada quadro do jogo precisa passar por **três traduções em tempo real**:
+
+1. **Windows → macOS:** o Wine traduz as funções do Windows para as do macOS.
+2. **Intel (x86) → ARM:** o jogo é um programa Intel de 32 bits, e o chip M é ARM. O Rosetta 2 traduz as instruções do processador.
+3. **DirectX 9 → OpenGL → Metal:** o macOS não tem DirectX. Os gráficos são convertidos para OpenGL, que a Apple converte de novo para Metal.
+
+Cada tradução custa desempenho. Por isso o FPS cai quando você anda por áreas novas: o jogo precisa carregar e converter mapas, sprites e efeitos na hora. Não é defeito do seu Mac nem do jogo. É o preço de rodar um programa feito para outro sistema.
+
 ## 1. Baixar e instalar
 
 1. Baixe o arquivo `HeroSagaParaMac-1.0.dmg` na página de *Releases* do repositório.

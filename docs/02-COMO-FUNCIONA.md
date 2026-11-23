@@ -107,6 +107,36 @@ O `build.sh`:
 
 `tools/verify-engine.sh "/Applications/Hero Saga para Mac.app"` baixa o motor oficial de novo e compara **arquivo por arquivo** com o que está no app.
 
+## Desempenho: por que não roda tão bem nos chips M
+
+O cliente é um executável **x86 de 32 bits, DirectX 9**, otimizado para PCs Windows. Num Mac Apple Silicon, cada quadro passa por estas camadas:
+
+| Camada | Tradução | Custo |
+|---|---|---|
+| Wine (WineCX) | API Win32 → chamadas POSIX/Cocoa | Moderado. O `msync` reduz bastante o custo de sincronização entre threads |
+| WoW64 (dentro do Wine) | Código Windows 32 bits rodando sobre um Wine 64 bits | Cada chamada 32→64 bits passa por "thunks" de conversão |
+| Rosetta 2 | Instruções x86/x86-64 → ARM64 | Tradução antecipada (AOT) e em tempo real (JIT). Bom em geral, mas pesa em código 32 bits e auto-modificável |
+| wined3d | Direct3D 9 → OpenGL | Converte estados e shaders; compila shaders na primeira vez que aparecem, o que gera engasgos |
+| macOS | OpenGL → Metal | A Apple descontinuou o OpenGL e o implementa sobre o Metal, com outra camada de conversão |
+
+Consequências observadas no M1:
+- **Gargalo de CPU, não de GPU:** o processo `Hero.exe` usa 100–175% de CPU, enquanto a GPU sobra. Por isso reduzir a resolução ajuda pouco e reduzir efeitos e sprites ajuda mais.
+- **Quedas ao andar:** carregar áreas novas do `hero.hrf` (7,8 GB) e compilar shaders novos acontece na thread principal, já traduzida.
+- **Alternativas testadas e descartadas:** DXVK (DirectX 9 → Vulkan → MoltenVK → Metal) deu tela preta, porque o MoltenVK não suporta recursos que o DXVK exige. O renderizador Vulkan do wined3d não abriu (erros `vkCreateBuffer`). O DirectX 12 do cliente travou (vkd3d). D3DMetal (Apple) e DXMT são voltados para DirectX 11/12 e não foram testados com este cliente 32 bits.
+
+### Outros processadores (não testado)
+
+Testamos somente no **MacBook Air M1 (8 GB)**. Para outros Macs só temos expectativas, a confirmar com testes:
+
+| Mac | Expectativa | Motivo |
+|---|---|---|
+| M2 / M3 / M4 | Melhor que o M1 | Núcleos mais rápidos (o gargalo é a CPU) e GPU melhor |
+| Pro / Max / Ultra | Melhor que o M1 comum | Mais núcleos de desempenho e GPU maior; o ganho em CPU por núcleo é menor |
+| Intel (i5/i7/i9) | Provavelmente pior que o M1 | Dispensam o Rosetta, mas a GPU integrada Intel (UHD/Iris) é bem mais fraca |
+| Intel com GPU AMD dedicada | Incerto | Pode ir bem; precisa de teste |
+
+Por isso a recomendação automática de presets (seção acima) é conservadora e deve ser recalibrada à medida que jogadores relatarem modelo e FPS.
+
 ## Limitações conhecidas
 
 - **Desempenho:** cada quadro passa por três traduções (Windows→macOS, x86→ARM, DirectX 9→OpenGL→Metal). No M1 o jogo fica em 50–75 FPS parado, com quedas ao andar por áreas novas.
